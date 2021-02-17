@@ -1,0 +1,576 @@
+{
+	"info": {
+		"_postman_id": "d6fbfc28-5ff0-4c60-afbf-17784dabcb1c",
+		"name": "Wire Transfer Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Initial State",
+			"item": [
+				{
+					"name": "Request STARTED state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 9,\r\n    \"wireTransferState\": \"STARTED\",\r\n    \"rejected\": true,\r\n\t\"expired\": true,\r\n\t\"canceled\": true,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Created State",
+			"item": [
+				{
+					"name": "Request CREATED state -> EXPIRED state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"wireTransferState\": \"CREATED\",\r\n    \"rejected\": true,\r\n\t\"expired\": true,\r\n\t\"canceled\": true,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request CREATED state -> CANCELED state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 12,\r\n    \"wireTransferState\": \"CREATED\",\r\n    \"rejected\": true,\r\n\t\"expired\": false,\r\n\t\"canceled\": true,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request CREATED state -> WAITING_PAYMENT state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 13,\r\n    \"wireTransferState\": \"CREATED\",\r\n    \"rejected\": true,\r\n\t\"expired\": false,\r\n\t\"canceled\": false,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Waiting Payment State",
+			"item": [
+				{
+					"name": "Request WAITING_PAYMENT state -> EXPIRED state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 10,\r\n    \"wireTransferState\": \"WAITING_PAYMENT\",\r\n    \"rejected\": true,\r\n\t\"expired\": true,\r\n\t\"canceled\": true,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request WAITING_PAYMENT state -> CANCELED state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 14,\r\n    \"wireTransferState\": \"WAITING_PAYMENT\",\r\n    \"rejected\": true,\r\n\t\"expired\": false,\r\n\t\"canceled\": true,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request WAITING_PAYMENT state -> REJECTED state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 15,\r\n    \"wireTransferState\": \"WAITING_PAYMENT\",\r\n    \"rejected\": true,\r\n\t\"expired\": false,\r\n\t\"canceled\": false,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request WAITING_PAYMENT state -> CONFIRMED_PAYMENT state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 16,\r\n    \"wireTransferState\": \"WAITING_PAYMENT\",\r\n    \"rejected\": false,\r\n\t\"expired\": false,\r\n\t\"canceled\": false,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Confirmed Payment State",
+			"item": [
+				{
+					"name": "Request CONFIRMED_PAYMENT state -> REVIEW_COMPLIANCE state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"wireTransferState\": \"CONFIRMED_PAYMENT\",\r\n    \"rejected\": false,\r\n\t\"expired\": false,\r\n\t\"canceled\": false,\r\n\t\"reviewed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request CONFIRMED_PAYMENT state -> SENT state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 17,\r\n    \"wireTransferState\": \"CONFIRMED_PAYMENT\",\r\n    \"rejected\": false,\r\n\t\"expired\": false,\r\n\t\"canceled\": false,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review State",
+			"item": [
+				{
+					"name": "Request REVIEW_COMPLIANCE state -> CONFIRMED_PAYMENT state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"wireTransferState\": \"REVIEW_COMPLIANCE\",\r\n    \"rejected\": false,\r\n\t\"expired\": false,\r\n\t\"canceled\": false,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request REVIEW_DATA_WRONG state -> CONFIRMED_PAYMENT state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"wireTransferState\": \"REVIEW_DATA_WRONG\",\r\n    \"rejected\": false,\r\n\t\"expired\": false,\r\n\t\"canceled\": false,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sent State",
+			"item": [
+				{
+					"name": "Request SENT state -> REJECTED state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 8,\r\n    \"wireTransferState\": \"SENT\",\r\n    \"rejected\": true,\r\n\t\"expired\": false,\r\n\t\"canceled\": false,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request SENT state -> REVIEW_DATA_WRONG state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 18,\r\n    \"wireTransferState\": \"SENT\",\r\n    \"rejected\": false,\r\n\t\"expired\": false,\r\n\t\"canceled\": false,\r\n\t\"reviewed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request SENT state -> SUCCESSFUL state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 19,\r\n    \"wireTransferState\": \"SENT\",\r\n    \"rejected\": false,\r\n\t\"expired\": false,\r\n\t\"canceled\": true,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Final State",
+			"item": [
+				{
+					"name": "Request CANCELED state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"wireTransferState\": \"CANCELED\",\r\n    \"rejected\": true,\r\n\t\"expired\": true,\r\n\t\"canceled\": true,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request EXPIRED state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"wireTransferState\": \"EXPIRED\",\r\n    \"rejected\": true,\r\n\t\"expired\": true,\r\n\t\"canceled\": true,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request REJECTED state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 5,\r\n    \"wireTransferState\": \"REJECTED\",\r\n    \"rejected\": true,\r\n\t\"expired\": true,\r\n\t\"canceled\": true,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request SUCCESSFUL state",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 11,\r\n    \"wireTransferState\": \"SUCCESSFUL\",\r\n    \"rejected\": true,\r\n\t\"expired\": true,\r\n\t\"canceled\": true,\r\n\t\"reviewed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/wire-transfer/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wire-transfer",
+								"process"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
