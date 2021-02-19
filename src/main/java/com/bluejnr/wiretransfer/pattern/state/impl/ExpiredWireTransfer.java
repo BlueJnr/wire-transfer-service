@@ -9,11 +9,12 @@ public class ExpiredWireTransfer extends WireTransferState {
 
 	public ExpiredWireTransfer(WireTransferVO wireTransferVO) {
 		super(wireTransferVO);
+		addPossibleStates();
 	}
 
 	@Override
-	public void process() {
-		throw new FinalStateException("La transferencia ya se encuentra VENCIDA");
+	public void process(WireTransferStrategy nextStatus) {
+		throw new FinalStateException("La transferencia ya se encuentra EXPIRADA");
 	}
 	
 	@Override
@@ -21,6 +22,11 @@ public class ExpiredWireTransfer extends WireTransferState {
 		return WireTransferStrategy
 				.EXPIRED
 				.name();
+	}
+
+	@Override
+	public void addPossibleStates() {
+		
 	}
 
 }

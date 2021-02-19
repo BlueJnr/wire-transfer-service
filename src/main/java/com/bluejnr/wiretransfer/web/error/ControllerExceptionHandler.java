@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
+import com.bluejnr.wiretransfer.exception.ChangeStateException;
 import com.bluejnr.wiretransfer.exception.ErrorMessage;
 import com.bluejnr.wiretransfer.exception.FinalStateException;
 import com.bluejnr.wiretransfer.exception.StateNotMatchException;
@@ -34,6 +35,30 @@ public class ControllerExceptionHandler {
         HttpStatus.BAD_REQUEST.value(),
         new Date(),
         ex.getMessage(),
+        request.getDescription(false));
+    
+    return message;
+  }
+  
+  @ExceptionHandler(ChangeStateException.class)
+  @ResponseStatus(value = HttpStatus.METHOD_NOT_ALLOWED)
+  public ErrorMessage changeStateException(ChangeStateException ex, WebRequest request) {
+    ErrorMessage message = new ErrorMessage(
+        HttpStatus.METHOD_NOT_ALLOWED.value(),
+        new Date(),
+        ex.getMessage(),
+        request.getDescription(false));
+    
+    return message;
+  }
+  
+  @ExceptionHandler(IllegalArgumentException.class)
+  @ResponseStatus(value = HttpStatus.NOT_FOUND)
+  public ErrorMessage stateNotFound(IllegalArgumentException ex, WebRequest request) {
+    ErrorMessage message = new ErrorMessage(
+        HttpStatus.METHOD_NOT_ALLOWED.value(),
+        new Date(),
+        "El estado siguiente que se quiere procesar no fue encontrado",
         request.getDescription(false));
     
     return message;

@@ -9,10 +9,11 @@ public class CanceledWireTransfer extends WireTransferState{
 
 	public CanceledWireTransfer(WireTransferVO wireTransferVO) {
 		super(wireTransferVO);
+		addPossibleStates();
 	}
 
 	@Override
-	public void process() {
+	public void process(WireTransferStrategy nextStatus) {
 		throw new FinalStateException("La transferencia ya se encuentra ANULADA");
 	}
 
@@ -21,6 +22,11 @@ public class CanceledWireTransfer extends WireTransferState{
 		return WireTransferStrategy
 				.CANCELED
 				.name();
+	}
+
+	@Override
+	public void addPossibleStates() {
+		
 	}
 	
 }

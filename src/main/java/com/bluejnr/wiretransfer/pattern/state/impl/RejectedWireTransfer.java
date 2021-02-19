@@ -9,10 +9,11 @@ public class RejectedWireTransfer extends WireTransferState {
 
 	public RejectedWireTransfer(WireTransferVO wireTransferVO) {
 		super(wireTransferVO);
+		addPossibleStates();
 	}
 
 	@Override
-	public void process() {
+	public void process(WireTransferStrategy nextStatus) {
 		throw new FinalStateException("La transferencia ya se encuentra RECHAZADA");
 	}
 
@@ -21,5 +22,10 @@ public class RejectedWireTransfer extends WireTransferState {
 		return WireTransferStrategy
 				.REJECTED
 				.name();
+	}
+
+	@Override
+	public void addPossibleStates() {
+		
 	}
 }

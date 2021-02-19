@@ -12,10 +12,7 @@ import lombok.Setter;
 public class WireTransferVO {
 	
 	private Integer id;
-	private WireTransferState wireTransferState;
-	private boolean rejected;
-	private boolean expired;
-	private boolean canceled;
-	private boolean reviewed;
+	private WireTransferState state;
+	private String description;
 	
 }

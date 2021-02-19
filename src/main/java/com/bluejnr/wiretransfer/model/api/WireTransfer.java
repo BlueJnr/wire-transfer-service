@@ -8,10 +8,7 @@ import lombok.Setter;
 public class WireTransfer {
 	
 	private Integer id;
-	private String wireTransferState;
-	private boolean rejected;
-	private boolean expired;
-	private boolean canceled;
-	private boolean reviewed;
+	private String state;
+	private String description;
 	
 }

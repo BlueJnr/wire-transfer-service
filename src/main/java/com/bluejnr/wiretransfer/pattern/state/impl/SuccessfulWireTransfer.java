@@ -9,10 +9,11 @@ public class SuccessfulWireTransfer extends WireTransferState {
 
 	public SuccessfulWireTransfer(WireTransferVO wireTransferVO) {
 		super(wireTransferVO);
+		addPossibleStates();
 	}
 
 	@Override
-	public void process() {
+	public void process(WireTransferStrategy nextStatus) {
 	    throw new FinalStateException("La transferencia ya se envio EXITOSAMENTE");
 	}
 
@@ -21,5 +22,10 @@ public class SuccessfulWireTransfer extends WireTransferState {
 		return WireTransferStrategy
 				.SUCCESSFUL
 				.name();
+	}
+
+	@Override
+	public void addPossibleStates() {
+		
 	}
 }

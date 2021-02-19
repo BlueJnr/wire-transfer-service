@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bluejnr.wiretransfer.model.api.WireTransfer;
@@ -15,9 +16,9 @@ public class WireTransferController {
 
 	@Autowired
 	private WireTransferService wireTransferService;
-	
+
 	@PutMapping("/process")
-	public void process(@RequestBody WireTransfer wireTransfer) {
-		wireTransferService.process(wireTransfer);
+	public void process(@RequestBody WireTransfer wireTransfer, @RequestParam("nextState") String nextState) {
+		wireTransferService.process(wireTransfer, nextState);
 	}
 }
